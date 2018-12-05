@@ -8,10 +8,7 @@ candidate_votes = {}
 winning_candidate = ""
 winning_count = 0
 
-#with open(csvpath, 'r') as file_handler:
-#    lines=file_handler.read()
- #   print (lines)
-  #  print(type(lines))
+
 with open(csvpath,newline='') as csvfile:
     csvreader=csv.reader(csvfile,delimiter=',')
 
@@ -29,7 +26,9 @@ with open(csvpath,newline='') as csvfile:
     print("Elections results")
     print("**********************************************")
     print ("Total voters : " + str(total_voters))
+    print("**********************************************")
     print("Total votes and percentage by candidate")
+    print("**********************************************")
     #print (candidates)
     #print (candidate_votes)
 
@@ -47,4 +46,16 @@ with open(csvpath,newline='') as csvfile:
     #print (candidate_votes)
     #print (vote_percentage)
         print (outputprint)
-    print (winning_candidate)
+    print("**********************************************")
+    print ("The winner candidate is : " + str(winning_candidate))
+
+    with open(file_output, "w") as txt_file:
+        txt_file.write("Election Results:  " )
+        txt_file.write("*************************" )
+        txt_file.write("Total Voters:  " + str(total_voters))
+        txt_file.write("*************************" )
+        txt_file.write("Total Votes and percentage by candidate:  " )
+        txt_file.write("*************************" )
+        txt_file.write(f"{candidate}: {total_votes_candidate}: {vote_percentage}")
+        txt_file.write("The winner candidate is : " + str(winning_candidate))
+        
